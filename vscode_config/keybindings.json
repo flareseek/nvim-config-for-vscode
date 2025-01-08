@@ -1,0 +1,180 @@
+// Place your key bindings in this file to override the defaults
+[
+      // ESC
+      {
+        "key": "ctrl+[",
+        "command": "editor.action.peekDefinition",
+        "when": "inReferenceSearchEditor || referenceSearchVisible"
+      },
+      {
+        "key": "ctrl+[",
+        "command": "workbench.action.closeFindWidget",
+        "when": "editorFocus && findWidgetVisible"
+      },
+      {
+        "key": "ctrl+[",
+        "command": "closePanel",
+        "when": "!editorFocus && panelFocus"
+      },
+      {
+        "key": "ctrl+[",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "!editorFocus && !panelFocus"
+      },
+      {
+        "key": "ctrl+[",
+        "command": "search.action.focusSearchList",
+        "when": "searchViewletVisible && searchInputBoxFocus"
+      },
+      
+      // explorer
+      {
+        "key": ", t", // <leader>t
+        "command": "workbench.action.toggleSidebarVisibility",
+        "when": "neovim.mode != insert && !terminalFocus && !inputFocus"
+      },
+      {
+        "key": ", f", // <leader>f
+        "command": "workbench.view.explorer",
+        "when": "viewContainer.workbench.view.explorer.enabled && neovim.mode != insert && !terminalFocus && !inputFocus"
+      },
+      {
+        "key": "u",
+        "command": "undo",
+        "when": "explorerViewletVisible && explorerViewletFocus"
+      },
+      {
+        "key": "ctrl+r",
+        "command": "redo",
+        "when": "explorerViewletVisible && explorerViewletFocus"
+      },
+
+      // scroll
+      {
+        "key": "ctrl+u",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            {
+              "command": "editorScroll",
+              "args": {
+                "to": "up",
+                "by": "halfPage"
+              }
+            },
+            {
+              "command": "cursorMove",
+              "args": { "to": "viewPortCenter" }
+            }
+          ]
+        }
+      },
+      {
+        "key": "ctrl+d",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            {
+              "command": "editorScroll",
+              "args": {
+                "to": "down",
+                "by": "halfPage"
+              }
+            },
+            {
+              "command": "cursorMove",
+              "args": { "to": "viewPortCenter" }
+            }
+          ]
+        }
+      },
+      {
+        "key": "ctrl+b",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            {
+              "command": "editorScroll",
+              "args": {
+                "to": "up",
+                "by": "page"
+              }
+            },
+            {
+              "command": "cursorMove",
+              "args": {
+                "to": "viewPortCenter"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "ctrl+f",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            {
+              "command": "editorScroll",
+              "args": {
+                "to": "down",
+                "by": "page"
+              }
+            },
+            {
+              "command": "cursorMove",
+              "args": {
+                "to": "viewPortCenter"
+              }
+            }
+          ]
+        }
+      },
+
+      // navigation
+      {
+        "key": "ctrl+w k",
+        "command": "workbench.action.navigateUp",
+        "when": "!editorTextFocus && neovim.mode != 'cmdline'"
+      },
+      {
+        "key": "ctrl+w k",
+        "command": "-workbench.action.navigateUp",
+        "when": "!editorTextFocus && !terminalFocus && neovim.mode != 'cmdline'"
+      },
+      {
+        "key": "ctrl+w j",
+        "command": "workbench.action.navigateDown",
+        "when": "!editorTextFocus && neovim.mode != 'cmdline'"
+      },
+      {
+        "key": "ctrl+w j",
+        "command": "-workbench.action.navigateDown",
+        "when": "!editorTextFocus && !terminalFocus && neovim.mode != 'cmdline'"
+      },
+      {
+        "key": "ctrl+w h",
+        "command": "workbench.action.navigateLeft",
+        "when": "!editorTextFocus && neovim.mode != 'cmdline'"
+      },
+      {
+        "key": "ctrl+w h",
+        "command": "-workbench.action.navigateLeft",
+        "when": "!editorTextFocus && !terminalFocus && neovim.mode != 'cmdline'"
+      },
+      {
+        "key": "ctrl+w l",
+        "command": "workbench.action.navigateRight",
+        "when": "!editorTextFocus && neovim.mode != 'cmdline'"
+      },
+      {
+        "key": "ctrl+w l",
+        "command": "-workbench.action.navigateRight",
+        "when": "!editorTextFocus && !terminalFocus && neovim.mode != 'cmdline'"
+      },
+      {
+        "key": "ctrl+[",
+        "command": "filesExplorer.cancelCut",
+        "when": "explorerResourceCut && filesExplorerFocus && foldersViewVisible && !inputFocus"
+      },
+]
