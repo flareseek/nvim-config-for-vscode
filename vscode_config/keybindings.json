@@ -1,5 +1,6 @@
 // Place your key bindings in this file to override the defaults
 [
+      // leader when: "neovim.mode == normal && !terminalFocus && !inputBoxFocus"
       // ESC
       {
         "key": "ctrl+[",
@@ -26,17 +27,22 @@
         "command": "search.action.focusSearchList",
         "when": "searchViewletVisible && searchInputBoxFocus"
       },
+      {
+        "key": "ctrl+[",
+        "command": "filesExplorer.cancelCut",
+        "when": "explorerResourceCut && filesExplorerFocus && foldersViewVisible && !inputFocus"
+      },
       
       // explorer
       {
         "key": ", t", // <leader>t
         "command": "workbench.action.toggleSidebarVisibility",
-        "when": "neovim.mode != insert && !terminalFocus && !inputFocus"
+        "when": "neovim.mode == normal && !terminalFocus && !inputBoxFocus"
       },
       {
         "key": ", f", // <leader>f
         "command": "workbench.view.explorer",
-        "when": "viewContainer.workbench.view.explorer.enabled && neovim.mode != insert && !terminalFocus && !inputFocus"
+        "when": "viewContainer.workbench.view.explorer.enabled && neovim.mode == normal && !terminalFocus && !inputBoxFocus"
       },
       {
         "key": "u",
@@ -47,6 +53,16 @@
         "key": "ctrl+r",
         "command": "redo",
         "when": "explorerViewletVisible && explorerViewletFocus"
+      },
+      {
+        "key": "ctrl+n",
+        "command": "workbench.action.nextSideBarView",
+        "when": "sideBarFocus"
+      },
+      {
+        "key": "ctrl+p",
+        "command": "workbench.action.previousSideBarView",
+        "when": "sideBarFocus"
       },
 
       // scroll
@@ -172,9 +188,26 @@
         "command": "-workbench.action.navigateRight",
         "when": "!editorTextFocus && !terminalFocus && neovim.mode != 'cmdline'"
       },
+
+      // debugger
       {
-        "key": "ctrl+[",
-        "command": "filesExplorer.cancelCut",
-        "when": "explorerResourceCut && filesExplorerFocus && foldersViewVisible && !inputFocus"
+        "key": ", , p", // <leader><leader>p
+        "command": "workbench.action.debug.start",
+        "when": "debuggersAvailable && debugState == 'inactive' && neovim.mode == normal && !terminalFocus && !inputBoxFocus"
+      },
+      {
+        "key": ", , o", // <leader><leader>o
+        "command": "workbench.action.debug.stop",
+        "when": "inDebugMode && !focusedSessionIsAttach && neovim.mode == normal && !terminalFocus && !inputBoxFocus"
+      },
+      {
+        "key": ", , shift+R", // <leader><leader>R
+        "command": "workbench.action.debug.restart",
+        "when": "inDebugMode && neovim.mode == normal && !terminalFocus && !inputBoxFocus",
+      },
+      {
+        "key": ", , r", // <leader><leader>r
+        "command": "dart.hotReload", // dart ONLY
+        "when": "dart-code:isInDartDebugSession && inDebugMode && debugType == 'dart' || dart-code:service.reloadSources && inDebugMode && debugType == 'dart' && neovim.mode == normal && !terminalFocus && !inputBoxFocus"
       },
 ]
