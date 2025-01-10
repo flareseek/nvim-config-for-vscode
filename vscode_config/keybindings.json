@@ -4,6 +4,11 @@
       // ESC
       {
         "key": "ctrl+[",
+        "command": "hideCodeActionWidget",
+        "when": "codeActionMenuVisible"
+      },
+      {
+        "key": "ctrl+[",
         "command": "editor.action.peekDefinition",
         "when": "inReferenceSearchEditor || referenceSearchVisible"
       },
@@ -35,24 +40,24 @@
       
       // explorer
       {
-        "key": ", t", // <leader>t
+        "key": "\\ t", // <leader>t
         "command": "workbench.action.toggleSidebarVisibility",
         "when": "neovim.mode == normal && !terminalFocus && !inputBoxFocus"
       },
       {
-        "key": ", f", // <leader>f
+        "key": "\\ f", // <leader>f
         "command": "workbench.view.explorer",
         "when": "viewContainer.workbench.view.explorer.enabled && neovim.mode == normal && !terminalFocus && !inputBoxFocus"
       },
       {
         "key": "u",
         "command": "undo",
-        "when": "explorerViewletVisible && explorerViewletFocus"
+        "when": "explorerViewletVisible && explorerViewletFocus && !inputBoxFocus && !inputFocus"
       },
       {
         "key": "ctrl+r",
         "command": "redo",
-        "when": "explorerViewletVisible && explorerViewletFocus"
+        "when": "explorerViewletVisible && explorerViewletFocus && !inputBoxFocus && !inputFocus"
       },
       {
         "key": "ctrl+n",
@@ -63,6 +68,70 @@
         "key": "ctrl+p",
         "command": "workbench.action.previousSideBarView",
         "when": "sideBarFocus"
+      },
+
+      // navigation
+      {
+        "key": "ctrl+w k",
+        "command": "workbench.action.navigateUp",
+        "when": "!editorTextFocus && neovim.mode != 'cmdline'"
+      },
+      {
+        "key": "ctrl+w k",
+        "command": "-workbench.action.navigateUp",
+        "when": "!editorTextFocus && !terminalFocus && neovim.mode != 'cmdline'"
+      },
+      {
+        "key": "ctrl+w j",
+        "command": "workbench.action.navigateDown",
+        "when": "!editorTextFocus && neovim.mode != 'cmdline'"
+      },
+      {
+        "key": "ctrl+w j",
+        "command": "-workbench.action.navigateDown",
+        "when": "!editorTextFocus && !terminalFocus && neovim.mode != 'cmdline'"
+      },
+      {
+        "key": "ctrl+w h",
+        "command": "workbench.action.navigateLeft",
+        "when": "!editorTextFocus && neovim.mode != 'cmdline'"
+      },
+      {
+        "key": "ctrl+w h",
+        "command": "-workbench.action.navigateLeft",
+        "when": "!editorTextFocus && !terminalFocus && neovim.mode != 'cmdline'"
+      },
+      {
+        "key": "ctrl+w l",
+        "command": "workbench.action.navigateRight",
+        "when": "!editorTextFocus && neovim.mode != 'cmdline'"
+      },
+      {
+        "key": "ctrl+w l",
+        "command": "-workbench.action.navigateRight",
+        "when": "!editorTextFocus && !terminalFocus && neovim.mode != 'cmdline'"
+      },
+
+      // debugger
+      {
+        "key": "\\ \\ p", // <leader><leader>p
+        "command": "workbench.action.debug.start",
+        "when": "debuggersAvailable && debugState == 'inactive' && neovim.mode == normal && !terminalFocus && !inputBoxFocus"
+      },
+      {
+        "key": "\\ \\ o", // <leader><leader>o
+        "command": "workbench.action.debug.stop",
+        "when": "inDebugMode && !focusedSessionIsAttach && neovim.mode == normal && !terminalFocus && !inputBoxFocus"
+      },
+      {
+        "key": "\\ \\ shift+R", // <leader><leader>R
+        "command": "workbench.action.debug.restart",
+        "when": "inDebugMode && neovim.mode == normal && !terminalFocus && !inputBoxFocus",
+      },
+      {
+        "key": "\\ \\ r", // <leader><leader>r
+        "command": "dart.hotReload", // dart ONLY
+        "when": "dart-code:isInDartDebugSession && inDebugMode && debugType == 'dart' || dart-code:service.reloadSources && inDebugMode && debugType == 'dart' && neovim.mode == normal && !terminalFocus && !inputBoxFocus"
       },
 
       // scroll
@@ -147,67 +216,4 @@
         }
       },
 
-      // navigation
-      {
-        "key": "ctrl+w k",
-        "command": "workbench.action.navigateUp",
-        "when": "!editorTextFocus && neovim.mode != 'cmdline'"
-      },
-      {
-        "key": "ctrl+w k",
-        "command": "-workbench.action.navigateUp",
-        "when": "!editorTextFocus && !terminalFocus && neovim.mode != 'cmdline'"
-      },
-      {
-        "key": "ctrl+w j",
-        "command": "workbench.action.navigateDown",
-        "when": "!editorTextFocus && neovim.mode != 'cmdline'"
-      },
-      {
-        "key": "ctrl+w j",
-        "command": "-workbench.action.navigateDown",
-        "when": "!editorTextFocus && !terminalFocus && neovim.mode != 'cmdline'"
-      },
-      {
-        "key": "ctrl+w h",
-        "command": "workbench.action.navigateLeft",
-        "when": "!editorTextFocus && neovim.mode != 'cmdline'"
-      },
-      {
-        "key": "ctrl+w h",
-        "command": "-workbench.action.navigateLeft",
-        "when": "!editorTextFocus && !terminalFocus && neovim.mode != 'cmdline'"
-      },
-      {
-        "key": "ctrl+w l",
-        "command": "workbench.action.navigateRight",
-        "when": "!editorTextFocus && neovim.mode != 'cmdline'"
-      },
-      {
-        "key": "ctrl+w l",
-        "command": "-workbench.action.navigateRight",
-        "when": "!editorTextFocus && !terminalFocus && neovim.mode != 'cmdline'"
-      },
-
-      // debugger
-      {
-        "key": ", , p", // <leader><leader>p
-        "command": "workbench.action.debug.start",
-        "when": "debuggersAvailable && debugState == 'inactive' && neovim.mode == normal && !terminalFocus && !inputBoxFocus"
-      },
-      {
-        "key": ", , o", // <leader><leader>o
-        "command": "workbench.action.debug.stop",
-        "when": "inDebugMode && !focusedSessionIsAttach && neovim.mode == normal && !terminalFocus && !inputBoxFocus"
-      },
-      {
-        "key": ", , shift+R", // <leader><leader>R
-        "command": "workbench.action.debug.restart",
-        "when": "inDebugMode && neovim.mode == normal && !terminalFocus && !inputBoxFocus",
-      },
-      {
-        "key": ", , r", // <leader><leader>r
-        "command": "dart.hotReload", // dart ONLY
-        "when": "dart-code:isInDartDebugSession && inDebugMode && debugType == 'dart' || dart-code:service.reloadSources && inDebugMode && debugType == 'dart' && neovim.mode == normal && !terminalFocus && !inputBoxFocus"
-      },
 ]
