@@ -7,4 +7,9 @@ if vim.g.vscode then
   -- vim.o.runtimepath = vim.o.runtimepath .. ",{YOUR_CONFIG_PATH}"
 
   require("init.keymap")
+  vim.api.nvim_create_autocmd("VimEnter", {
+    callback = function()
+      vim.opt.ignorecase = true
+    end,
+  })
 end

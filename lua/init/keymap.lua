@@ -1,4 +1,4 @@
--- vim.g.mapleader = " "
+-- vim.g.mapleader = "\\"
 local vscode = require('vscode')
 
 -- > cursor
@@ -36,12 +36,12 @@ vim.keymap.set('n', 'zO', function() vscode.call("editor.unfoldRecursively") end
 vim.keymap.set('n', 'za', function() vscode.call("editor.toggleFold") end, { silent = true })
 -- >
 
+-- > LSP
+vim.keymap.set('n', 'gr', function() vscode.call("editor.action.rename") end, {silent = true });
+--
+
 -- > explorer
--- vim.keymap.set('n', '<leader>t', function() vim.cmd('call VSCodeNotify("workbench.action.toggleSidebarVisibility")') end, { silent = true })
--- vim.keymap.set('n', '<leader>f', function() vim.cmd('call VSCodeNotify("workbench.view.explorer")') end, { silent = true })
+-- vim.keymap.set('n', '<leader>t', function() vscode.call("workbench.action.toggleSidebarVisibility", { }) end, { silent = true })
+-- vim.keymap.set('n', '<leader>f', function() vim.cmd('call VSCodeNotify("workbench.files.action.focusFilesExplorer")') end, { silent = true })
 -- >
-vim.api.nvim_create_autocmd("VimEnter", {
-  callback = function()
-    vim.opt.ignorecase = true
-  end,
-})
+--

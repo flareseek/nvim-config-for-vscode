@@ -37,16 +37,38 @@
         "command": "filesExplorer.cancelCut",
         "when": "explorerResourceCut && filesExplorerFocus && foldersViewVisible && !inputFocus"
       },
-      
+      {
+        "key": "ctrl+[",
+        "command": "cancelRenameInput",
+        "when": "editorFocus && renameInputVisible"
+      },
+      {
+        "key": "ctrl+[",
+        "command": "editor.debug.action.closeExceptionWidget",
+        "when": "exceptionWidgetVisible"
+      },
+
+      // // LSP
+      // {
+      //   "key": "g r",
+      //   "command": "editor.action.rename",
+      //   "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly && !inputBoxFocus && !terminalFocus && neovim.mode == 'normal'"
+      // },
+     
       // explorer
       {
         "key": "\\ t", // <leader>t
-        "command": "workbench.action.toggleSidebarVisibility",
-        "when": "neovim.mode == normal && !terminalFocus && !inputBoxFocus"
+        "command": "workbench.action.toggleSidebarVisibility", 
+        "when": "sideBarVisible && neovim.mode == normal && !terminalFocus && !inputBoxFocus"
+      },
+      {
+        "key": "\\ t", // <leader>t
+        "command": "workbench.action.focusSideBar",
+        "when": "!sideBarVisible && neovim.mode == normal && !terminalFocus && !inputBoxFocus"
       },
       {
         "key": "\\ f", // <leader>f
-        "command": "workbench.view.explorer",
+        "command": "workbench.files.action.focusFilesExplorer", // workbench.view.explorer
         "when": "viewContainer.workbench.view.explorer.enabled && neovim.mode == normal && !terminalFocus && !inputBoxFocus"
       },
       {
